@@ -1,0 +1,27 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>高拍仪测试</title>
+</head>
+<SCRIPT language=javascript src="../js/calendar.js"></SCRIPT>
+<script language="javascript" type="text/javascript"> 
+function openChild(){ 
+
+var k = window.showModalDialog("fanpai.html",window,"dialogWidth:1200px;status:no;dialogHeight:700px"); 
+if(k != null) 
+document.getElementById("txt10").value = k; 
+}
+
+function openChild1(){ 
+
+var k = window.showModalDialog("paizhao.html",window,"dialogWidth:1200px;status:no;dialogHeight:700px"); 
+if(k != null) 
+document.getElementById("txt10").value = k; 
+}
+</script>
+
+<body leftmargin="0">
+<input type="button" value="翻拍材料" onclick="openChild()"/><br/>
+<input type="button" value="拍照" onclick="openChild1()"/><br/>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<head>  
+	<title>副头拍照</title>
+</head>
+<body onload="init()">
+     <div>
+         <object classid="clsid:EBD7BA00-1025-4BC2-BDD0-85ED5794EA0E" id=LaCtrl width=800 height=600> </object>
+         <object classid="clsid:20BD6E47-337C-40FB-A07D-D40991E5121D" id=LaThumbCtrl width=200 height=600></object>     
+	 </div>
+
+     <script   LANGUAGE=JavaScript>   
+        var idx=0;
+        var str_houzui = "jpg";
+
+	function init()
+	{
+	   start_preview();
+	}
+		
+		
+
+	function  start_preview()     
+  　　  {   
+  	     //var num = LaCtrl.GetCameraCount();
+
+	     //idx = LaCtrl.StartPreviewByID("1bcf", "8001");
+	     //LaCtrl.SetWelcomeStr(idx, "正在打开高拍仪, 请等待。。。");
+	     //LaCtrl.SetShowFaceMask(idx, true);
+	     ////LaCtrl.SetDevRes(idx, 1);
+	    //LaCtrl.SetMouseMode(idx, 3);
+	    //LaCtrl.btnSetDefaultResolution_Click(3)
+
+	    LaCtrl.btnOpenSub_Click();
+
+  　　  }   
+ 
+
+
+	window.onbeforeunload = function()
+        {
+ 	    stop_preview();
+        }
+
+  　　  function   stop_preview()     
+  　　  {    
+          //LaCtrl.StopPreviewByID("1bcf", "8001");
+            LaCtrl.btnCloseSub_Click();
+  　　  } 
+  
+		var num = 1;
+		function FormatNum(Source){ 
+			var strTemp=""; 
+			var len = 5;
+			if(Source < 10)
+			{
+				len = 4;
+			}
+			else if(Source < 100)
+			{
+				len = 3;
+			}
+			else if(Source < 1000)
+			{
+				len = 2;
+			}
+			for(i=0; i < len;i++)
+			{ 
+				strTemp += "0"; 
+			} 
+			return strTemp+Source; 
+		} 
+  
+		
+		function capture()
+		{
+			//var val = num;
+			//var filename = FormatNum(val);
+			//var ext = "jpg";
+			//var path="D:\\Img"+filename +"."+ext;             //get_name()
+			//num++;
+			//LaCtrl.Capture(idx, path);
+		    //LaThumbCtrl.AddItem(path);
+
+		    LaCtrl.btnEnableDelBack_Click(false);
+
+		    LaCtrl.btnSetJpgQualitySub_Click(70);
+
+		    var ttt = LaCtrl.btnCaptureSubBase64_Click("acs\\abc.jpg");
+		    alert(ttt);
+
+		    //LaCtrl.btnCaptureSub_Click("d:\\abc.jpg");
+		    //LaThumbCtrl.AddImageItem("d:\\abc.jpg");
+		
+		}
+			
+		function dodark()
+		{
+		    //LaCtrl.SetExposure(idx, false, -2);
+		    LaCtrl.btnLowLight_Click();
+		    
+		}
+			
+		function dobright()
+		{
+		    //LaCtrl.SetExposure(idx, false, -4);
+		    LaCtrl.btnHightLight_Click();
+		}
+
+		function setauto()
+		{
+		    //LaCtrl.SetExposure(idx, true, -2);
+		    LaCtrl.btnAuto_Click();
+		}
+
+
+		function Open() {
+		    LaCtrl.btnOpenSub_Click();
+		}
+
+		function Close() {
+		    LaCtrl.btnCloseSub_Click();
+		}
+     </script> 
+
+
+
+
+
+</br>
+<tr>
+
+    <input TYPE="button" VALUE="打开" onClick="Open()">
+    <input TYPE="button" VALUE="关闭" onClick="Close()">
+        <input   TYPE="button"   VALUE="拍照"   onClick="capture()">
+	<input   TYPE="button"   VALUE="弱光"   onClick="dodark()">
+	<input   TYPE="button"   VALUE="强光"   onClick="dobright()">
+	<input   TYPE="button"   VALUE="自动"   onClick="setauto()">
+	 </td>
+</tr>
+</body>
+  
+</html> 
